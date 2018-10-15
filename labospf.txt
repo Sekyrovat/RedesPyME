@@ -1,0 +1,73 @@
+Router Config
+
+enable
+configure terminal
+!
+no ip domain-lookup
+enable secret class
+!
+line console 0
+ password cisco
+ login
+ loggin synch
+!
+line vty 0 4
+ password cisco
+ login
+!
+exit
+banner motd $Unauthorized access is not permitted$
+hostname
+
+
+
+---------------------------
+IP addresses
+
+R1
+!
+interface g0/0 
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+!
+interface s0/0/0
+ ip address 192.168.12.1 255.255.255.252
+ clock rate 128000
+ no shutdown
+!
+interface s0/0/1 
+ ip address 192.168.13.1 255.255.255.252
+ no shutdown
+!
+
+R2
+!
+interface g0/0 
+ ip address 192.168.2.1 255.255.255.0
+ no shutdown
+!
+interface s0/0/0
+ ip address 192.168.12.2 255.255.255.252
+ no shutdown
+!
+interface s0/0/1 
+ ip address 192.168.23.1 255.255.255.252
+ clock rate 128000
+ no shutdown
+!
+
+R3
+!
+interface g0/0 
+ ip address 192.168.3.1 255.255.255.0
+ no shutdown
+!
+interface s0/0/0
+ ip address 192.168.13.2 255.255.255.252
+ clock rate 128000
+ no shutdown
+!
+interface s0/0/1 
+ ip address 192.168.23.2 255.255.255.252
+ no shutdown
+!

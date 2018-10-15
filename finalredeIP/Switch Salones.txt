@@ -1,0 +1,52 @@
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 20
+Switch(config-vlan)#name Profesores
+Switch(config-vlan)#vlan 10
+Switch(config-vlan)#name Alumnos
+Switch(config-vlan)#exit
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#swi
+Switch(config-if)#switchport mo
+Switch(config-if)#switchport mode t
+Switch(config-if)#switchport mode trunk 
+Switch(config-if)#sei
+Switch(config-if)#swi
+Switch(config-if)#switchport na
+Switch(config-if)#switchport nat
+Switch(config-if)#switchport tr
+Switch(config-if)#switchport trunk n
+Switch(config-if)#switchport trunk native v;
+Switch(config-if)#switchport trunk native v
+Switch(config-if)#switchport trunk native vlan 1
+Switch(config-if)#switchport trunk native vlan 15
+Switch(config-if)#switchport trunk a
+Switch(config-if)#switchport trunk allowed v
+Switch(config-if)#switchport trunk allowed vlan 10,15,20
+Switch(config-if)#exit
+Switch(config)#inter
+Switch(config)#interface r
+Switch(config)#interface range fa
+Switch(config)#interface range fastEthernet 0/2-24 swi
+Switch(config)#interface range fastEthernet 0/2-24
+Switch(config-if-range)#sw
+Switch(config-if-range)#switchport mode ac
+Switch(config-if-range)#switchport mode access 
+Switch(config-if-range)#exit
+Switch(config)#inter
+Switch(config)#interface f
+Switch(config)#interface fastEthernet 0/2
+Switch(config-if)#swi
+Switch(config-if)#switchport ac
+Switch(config-if)#switchport access v
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#exit
+Switch(config)#interface fastEthernet 0/3
+Switch(config-if)#switchport access vlan 20
+Switch(config-if)#exit
+Switch(config)#
+
+
+
+#ip nat inside source list 1 interface serial 0/1/0 overload 

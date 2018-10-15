@@ -1,0 +1,84 @@
+Configurar los parámetros básicos para cada router y switch
+
+a. Desactive la búsqueda de DNS.
+	no ip domain-lookup
+
+b. Configure los nombres de los dispositivos como se muestra en la topología.
+	hostname R#
+
+c. Configure la encriptación de contraseñas.
+	service password-encryption
+
+d. Asigne class como la contraseña del modo EXEC privilegiado.
+	enable password class
+
+e. Asigne cisco como la contraseña de consola y la contraseña de vty.
+g. Configure logging synchronous para la línea de consola.
+	line console 0
+	password cisco
+	login
+	logging synchronous
+	exit
+	line vty 0 4
+	password cisco
+	login
+	exit
+
+f. Configure un mensaje MOTD para advertir a los usuarios que se prohíbe el acceso no autorizado.
+	banner motd $Unauthorized access is not permitted$
+
+h. Configure las direcciones IP que figuran en la tabla de direcciones para todas las interfaces.
+i. Configure una descripción para cada interfaz con una dirección IP.
+j. Configure la frecuencia del reloj, si corresponde, para la interfaz de serie DCE.
+	interface g0/1
+	description Interfaz conectada a la PC-C
+	ip address 172.30.30.1 255.255.255.0
+	no shutdown
+
+	interface s0/0/1
+	description Interfaz conectada a R3
+	ip address 10.2.2.1 255.255.255.252
+	no shutdown
+
+
+	For DCE 
+		clock rate (nUMBER)128000
+
+k. Copie la configuración en ejecución en la configuración de inicio
+	copy running-config startup-config
+
+
+
+no ip domain-lookup
+enable password class
+line console 0
+password cisco
+login
+logging synchronous
+exit
+line vty 0 4
+password cisco
+login
+exit
+banner motd $Unauthorized access is not permitted$
+
+interface g0/0
+description Interfaz conectada a PC-B
+ip address 209.165.201.1 255.255.255.0
+no shutdown
+
+interface s0/0/0
+description Interfaz conectada a R1
+ip address 10.1.1.2 255.255.255.252
+no shutdown
+
+interface s0/0/1
+description Interfaz conectada a R3
+ip address 10.2.2.2 255.255.255.252
+clock rate 128000
+no shutdown
+
+service password-encryption
+hostname R2
+exit
+copy running-config startup-config
